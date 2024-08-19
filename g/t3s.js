@@ -281,6 +281,7 @@ function t3s_ctor() {
     c = newEl('th');
     r.appendChild(c);
     c.innerHTML = 'Action';
+
     k = [
         'Left/right',
         'Up',
@@ -318,7 +319,7 @@ function t3s_ctor() {
     else t3s_state = '';
 
     t3s_next();
-    addHnd(document,'keydown',t3s_keys);
+    addHnd(document, 'keydown', t3s_keys);
     t3s_clock(1);
 }
 
@@ -326,8 +327,10 @@ t3s_ctor();
 
 function t3s_dtor() {
     delHnd(document, 'keydown', t3s_keys);
-    if (t3s_timer != null)
+    if (t3s_timer != null) {
         window.clearTimeout(t3s_timer);
+        t3s_timer = null;
+    }
     t3s_state = '';
     while (lnch_div.firstElementChild) {
         lnch_div.firstElementChild.remove();
