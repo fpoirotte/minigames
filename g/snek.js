@@ -1,6 +1,7 @@
 var SNEK_SCORING=[10,22,37];
 var SNEK_SCORES_MSG='Loading highscores...<br/>Please wait.';
 var SNEK_PAUSE_MSG='Press any key to continue...<br/>...or press ESC to quit.';
+var SNEK_GAME_OVER_MSG='Game over! Press ESC key to quit.<br/>Press any other key to start a new game.';
 var SNEK_BG='#000';
 var SNEK_COLS=40;
 var SNEK_ROWS=30;
@@ -379,7 +380,7 @@ function snek_msg(state,msg) {
 
 function snek_cell(x,y) {
     try {
-        return snek_grid.getElementsByTagNameNS(NS_XHTML, 'span')[(SNEK_ROWS-1-y)*SNEK_COLS+x];
+        return snek_grid.getElementsByTagName('span')[(SNEK_ROWS-1-y)*SNEK_COLS+x];
     } catch(e) {
         return null;
     }
@@ -395,7 +396,7 @@ function snek_free(x,y) {
 }
 
 function snek_hidone() {
-    snek_msg('end', 'Game over! Press ESC key to quit.<br/>Press any other key to start a new game.');
+    snek_msg('end', SNEK_GAME_OVER_MSG);
 }
 
 function snek_hishown() {
