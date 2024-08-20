@@ -178,5 +178,6 @@ sequence.push(sequence[0].charCodeAt(0) + 1);
 
 lnch_add(`${gameBase}t3s.js`, sequence);
 lnch_add(`${gameBase}snek.js`, [97, 'b', 39, '%'.charCodeAt(0), '⇒', 0x25, 40, parseInt('50', 8), '⇑', '&'.charCodeAt(0)]);
+lnch_add(`${gameBase}spc.js`, "vnI ");
 addHnd(document, "DOMContentLoaded", lnch_reset);
 
