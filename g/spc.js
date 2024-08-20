@@ -833,7 +833,3 @@ function spc_lose_life() {
     spc_blink(32, cb);
     return true;
 }
-
-function spc_next_level() {
-    
-}
