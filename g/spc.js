@@ -6,7 +6,7 @@ var SPC_GAME_OVER_MSG='Game over! Press ESC key to quit.<br/>Press any other key
 var SPC_BG='#000';
 var SPC_WIDTH = 768;
 var SPC_HEIGHT = 600;
-var SPC_DELAY_INIT = 600;
+var SPC_DELAY_INIT = 500;
 var SPC_SPEED_UP = 40;
 var SPC_SAUCER_PERIOD = 30;
 var SPC_SAUCER_TIMER_PERIOD = 60;
@@ -451,6 +451,8 @@ function spc_clock() {
     var aliens_grid = document.getElementById('spc_aliens');
     var aliens = aliens_grid.getElementsByTagName('img');
 
+    if (!aliens_grid) return;
+
     for (alien of aliens_grid.getElementsByClassName("spc_explosion")) {
         alien.remove();
     }
@@ -458,10 +460,10 @@ function spc_clock() {
     if (!aliens.length) {
         while (spc_grid.firstElementChild)
             spc_grid.firstElementChild.remove();
+        spc_msg('pause', SPC_LEVEL_CLEARED_MSG);
         spc_draw(0);
         spc_delay -= SPC_SPEED_UP;
         if (spc_delay < 10) spc_delay = 10;
-        spc_msg('pause', SPC_LEVEL_CLEARED_MSG);
         return;
     }
 
@@ -494,7 +496,7 @@ function spc_clock() {
         spc_alien_shoot();
     }
 
-    spc_timer = window.setTimeout('spc_clock(1);', spc_delay);
+    spc_timer = window.setTimeout('spc_clock(1);', spc_delay + aliens.length * 2);
 }
 
 function spc_msg(state,msg) {
